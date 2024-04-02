@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 py-3">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a
+            class="navbar-brand ps-4 fs-3 d-flex align-items-center logo"
+            href="index.html"
+            style="display: block"
+          >
+            <img
+              src="./assets/imgs/Logos.png"
+              alt="Logo"
+              width="180px"
+              height="55px"
+            />
+          </a>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active me-5 fs-5"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-5 fs-5" href="explore.html">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-5 fs-5 orange fw-bold" href="job.html"
+                >Startup Jobs</a
+              >
+            </li>
+            <li>
+              <a href="login.html">
+                <button type="button" class="btn-sm mt-1 text-light rounded-2">
+                  Login
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid mt-5 pt-5 text">
+      <div class="row">
+        <div class="col-lg-3 fixed fixed-left">
+          <br />
+          <img
+            src="./assets/imgs/filter.png"
+            alt=""
+            width="20px"
+            height="20px"
+          />
+          <span class="fw-bold ms-2">Filter By</span>
+          <br />
+          <div>
+            <input
+              type="text"
+              class="form-control search-input mt-3"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+          <div class="dropdown mt-2">
+            <button class="dropdown-btn">
+              <span>Sort by</span>
+              <span class="arrow"></span>
+            </button>
+            <div class="dropdown-content">
+              <option class="ps-2" value="New">Alphabetical</option>
+              <option class="ps-2" value="Old">New</option>
+              <option class="ps-2" value="Alphabetical">Old</option>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9 fixed-center1">
+          <br />
+          <div class="fw-light">
+            <p class="fs-2">
+              Discover premier startup opportunities handpicked by Y Combinator.
+            </p>
+            <ul class="fs-4">
+              <li>
+                Apply to numerous startup positions using just one profile.
+              </li>
+              <li>
+                Enable YC founders to reach out to you, or discreetly explore
+                companies on your own terms.
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <br /><br />
+          <h4 class="orange fw-bold">Alphabetical</h4>
+          <div class="row">
+            <!-- Card start -->
+            <div class="col-6">
+              <div class="card mt-2 shadow" style="max-width: 580px">
+                <div class="row g-0">
+                  <div class="col-md-2 center1 rounded-3">
+                    <img src="..." width="70px" height="70px" />
+                  </div>
+                  <div class="col-md-10">
+                    <div class="card-body">
+                      <span class="fw-bold"
+                        >Emerge (YC W21) is hiring a Growth Engineer (remote)
+                      </span>
+                      <a
+                        href="https://www.emergetools.com/careers/jobs/growth-engineer"
+                        id="link"
+                      >
+                        <small
+                          >https://www.emergetools.com/careers/jobs/growth-engineer</small
+                        ></a
+                      >
+                      <a href="login.html">
+                        <button class="btn1 mt-2">Apply</button></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- card end -->
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

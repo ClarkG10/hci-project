@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Awesome Capacitor App</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/auth/register.js"></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body>
+    <div class="mt-2">
+      <a href="index.html" class="orange ms-3 fw-bold"
+        ><img
+          src="./assets/imgs/Logos.png"
+          alt="Logo"
+          width="180px"
+          height="55px"
+          class="me-2"
+      /></a>
+    </div>
+    <div class="center border rounded-4 shadow-lg bg-white">
+      <div class="fs-4 fw-bold text-center color">Create an Account</div>
+      <br />
+      <form id="form_register">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control rounded-4"
+            id="name"
+            name="name"
+            placeholder="Username"
+            autocomplete="username"
+            required
+          />
+          <label for="name">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control rounded-4"
+            id="email"
+            name="email"
+            placeholder="name@example.com"
+            required
+          />
+          <label for="email">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control rounded-4"
+            id="password"
+            name="password"
+            placeholder="Password"
+            autocomplete="new-password"
+            required
+          />
+          <label for="password">Password</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control rounded-4"
+            id="password_confirmation"
+            name="password_confirmation"
+            placeholder="Password Confirmation"
+            autocomplete="new-password"
+            required
+          />
+          <label for="password_confirmation">Password Confirmation</label>
+        </div>
+        <br />
+        <div class="text-center">
+          <button type="submit" class="login fw-bold">Create an account</button>
+        </div>
+        <div class="text-center mt-2">
+          <p>
+            Already have an account?
+            <a href="login.html" class="color">Click here.</a>
+          </p>
+        </div>
+      </form>
+    </div>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

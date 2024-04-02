@@ -1,0 +1,327 @@
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color {
+    text-decoration: none;
+    color: #FF6500;
+}
+
+.login {
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background-color: #FF6500;
+    width: 100%;
+    height: 40px;
+    margin-right: 150px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.center.border.rounded-4.shadow-lg {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 25px;
+}
+
+#password,
+#password_confirmation,
+#email,
+#name {
+    margin-right: 150px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#password:hover,
+#password_confirmation:hover,
+#email:hover,
+#name:hover {
+    margin-right: 150px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-color: #FF6500;
+}
+
+body,
+.bg-color {
+    background-color: #efefef;
+}
+
+.btn,
+.background {
+    background-color: #FF6500;
+}
+
+
+.background1 {
+    color: #FF6500;
+    font-size: 58px;
+
+}
+
+
+
+.text1 {
+    font-size: 21px;
+    max-width: 600px;
+    /* Adjust the maximum width as needed */
+}
+
+.text {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.navbar-brand,
+.text3 {
+    color: #FF6500;
+    font-family: "Lalezar", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.nav-link:hover {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #FF6500;
+}
+
+.navbar-nav .nav-link,
+.btn {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.orange {
+    color: #FF6500 !important;
+}
+
+.size {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.size1 {
+    font-size: 13px;
+}
+
+.btn:hover {
+    background-color: #FF6500;
+    /* Maintain the same background color on hover */
+    border-color: #FF6500;
+    /* Maintain the same border color on hover */
+    color: white;
+    /* Maintain the same text color on hover */
+}
+
+.btn1:hover {
+    background-color: #FF6500;
+    /* Maintain the same background color on hover */
+    border-color: #FF6500;
+    /* Maintain the same border color on hover */
+    color: white;
+    /* Maintain the same text color on hover */
+}
+
+.btn1 {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    background-color: #FF6500;
+    border-color: #FF6500;
+    font-style: normal;
+    color: white;
+    border-radius: 10px;
+    width: 80px;
+}
+
+.search-input {
+    background-image: url('search.png');
+    background-size: 20px;
+    background-color: #efefef;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    border-color: #FF6500;
+    border-radius: 10px;
+    border-width: 2px;
+}
+
+.search-input:focus {
+    background-image: url('search.png');
+    background-size: 20px;
+    background-color: #efefef;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    border-color: #FF6500;
+    border-radius: 10px;
+    border-width: 2px;
+    box-shadow: none;
+}
+
+#link {
+    color: #000000;
+}
+
+.boxsize {
+    width: 55%;
+    white-space: wrap;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 2px 2px 0px 8px;
+
+}
+
+.mx-5.mt-3.fw-meduimlight {
+    font-size: 17px;
+
+}
+
+.fixed-left {
+    position: fixed;
+    top: 60px;
+    /* Adjust as needed */
+    left: 20px;
+    width: 20%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 60px;
+    /* Adjust as needed */
+}
+
+.fixed-right {
+    position: fixed;
+    top: 40px;
+    /* Adjust as needed */
+    right: 0;
+    width: 25%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 60px;
+    /* Adjust as needed */
+}
+
+.fixed-center {
+    margin-left: 300px;
+}
+
+.fixed-center1 {
+    margin-left: 350px;
+
+}
+
+.btn5 {
+    border: none;
+    border-radius: 15px;
+    background-color: #FF6500;
+    width: 55%;
+    height: 40px;
+    color: white;
+}
+
+.btn-sm {
+    color: white;
+    background-color: #FF6500;
+    border: none;
+    width: 65px;
+    height: 35px;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+/* Mobile and Tablet size CSS */
+@media screen and (max-width: 992px) {
+    .navbar-brand.ps-4.fs-3.d-flex.align-items-center.logo {
+        display: none !important;
+    }
+
+    .navbar-brand.ps-4.fs-3.d-flex.align-items-center {
+        display: block !important;
+    }
+}
+
+.dropdown {
+    max-width: 12em;
+    margin: auto 0;
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-btn {
+    font-size: 18px;
+    width: 80px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4em 0.2em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #000000;
+    transition: transform ease-in-out 0.3s;
+}
+
+.dropdown-content {
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.dropdown-content option {
+    background: #FF6500;
+    border-radius: 0.5em;
+    position: relative;
+    left: 100%;
+    transition: 0.5s;
+    display: block;
+    padding: 0.4em 0.2em;
+    color: #fff;
+    margin: 0.1em 0;
+    margin-left: 10px;
+    /* Adjusted margin-left */
+    text-decoration: none;
+}
+
+.dropdown-content option:hover {
+    background: #d5d4d3;
+    margin-left: 0;
+    /* Move the hover effect to the right */
+}
+
+.dropdown-btn:focus+.dropdown-content {
+    visibility: visible;
+}
+
+.dropdown-btn:focus>.arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-btn:focus+.dropdown-content option {
+    left: 0;
+}

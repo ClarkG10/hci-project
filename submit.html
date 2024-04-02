@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style1.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mt-2">
+      <a href="explore.html" class="orange ms-3 fw-bold"
+        ><img
+          src="./assets/imgs/Logos.png"
+          alt="Logo"
+          width="180px"
+          height="55px"
+          class="me-2"
+      /></a>
+    </div>
+    <div class="bg-white px-4 py-4 shadow-lg rounded-3 center">
+      <h3 class="text4 pt-3 orange text-center fw-bold">SUBMIT FORM</h3>
+      <form action="">
+        <div class="form-group mb-3">
+          <label for="title" class="form-label text4 fw-bold">Title</label>
+          <input
+            type="text"
+            class="form-control rectangle-73 shadow"
+            id="title"
+            name="title"
+            placeholder="Input title"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="url" class="form-label fw-bold">Url</label>
+          <input
+            type="text"
+            class="form-control rectangle-73 shadow"
+            id="url"
+            name="url"
+            placeholder="Share link of the website"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label fw-bold"
+            >Description</label
+          >
+          <textarea
+            class="form-control rectangle-73 shadow"
+            id="description"
+            name="description"
+            placeholder="Description(Optional)"
+            style="height: 150px"
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-center pt-4">
+          <label id="photo" class="mx-3 text-light rounded-3" for="file"
+            >Add logo
+          </label>
+          <input
+            class="btn6"
+            type="file"
+            id="file"
+            name="image"
+            accept=".jpeg, .png"
+            required
+          />
+          <button type="submit" class="btn6 btn-lg text-light rounded-3">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+</html>

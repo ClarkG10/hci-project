@@ -1,0 +1,59 @@
+.modal-header {
+    margin: auto;
+    border-bottom: none;
+    margin-bottom: -20px;
+}
+
+.class1 {
+    padding-bottom: 20px;
+    text-align: center;
+    position: relative;
+    white-space: wrap;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.margin1 {
+    margin-left: 80px;
+}
+
+.Text {
+    max-width: 579px;
+    margin-top: 20px;
+    font-size: small;
+    font-weight: 400;
+}
+
+.button {
+    margin-right: 60px;
+}
+
+.margin2 {
+    color: #FF6500;
+}
+
+.with-icon-container {
+    position: relative;
+}
+
+.icon-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    /* Adjust this value as needed */
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.Font {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
