@@ -24,53 +24,128 @@
     />
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
     <link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico" />
-    <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="./css/style.css" />
-    <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/auth/login.js" defer></script>
     <meta name="theme-color" content="#31d53d" />
   </head>
   <body>
-    <div class="mt-2">
-    <div class="center border rounded-4 shadow-lg p-5 bg-white">
-      <div class="text-center">
-        <a href="index.html"><img
-          src="./assets/imgs/Y (4).png"
-          width="320px"
-          height="87px"
-        /></a><br /><br />
+    <!-- wrong trigger modal -->
+    <button
+      type="button"
+      class="btn wrongbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#wrongModal"
+    >
+      wrong
+    </button>
+    <!-- worng alert modal -->
+    <div
+      class="modal fade"
+      id="wrongModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-1">
+                <img src="./assets/imgs/incorrect.png" alt="" width="30px" />
+              </div>
+              <div class="col-11 mt-1 text-center">
+                <span class="modal-title wrong" id="exampleModalLabel"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="fs-4 fw-bold text-center color">Login</div>
-      <br />
-      <form action="">
-        <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control rounded-4"
-            id="email"
-            placeholder="name@example.com"
-          />
-          <label for="email">Email address</label>
+    </div>
+
+    <!-- correct trigger modal -->
+    <button
+      type="button"
+      class="btn correctbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#correctModal"
+    >
+      correct
+    </button>
+    <!-- correct alert modal -->
+    <div
+      class="modal fade"
+      id="correctModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="exampleModalLabel">
+              <img
+                src="./assets/imgs/checked.png"
+                alt=""
+                width="25px"
+                class="me-2"
+              />Successfully login account.
+            </p>
+          </div>
         </div>
-        <div class="form-floating">
-          <input
-            type="password"
-            class="form-control rounded-4"
-            id="password"
-            placeholder="Password"
-          />
-          <label for="password">Password</label>
-        </div>
-        <br />
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <div class="center border rounded-4 shadow-lg p-5 bg-white">
         <div class="text-center">
-          <input type="submit" value="login" class="login fw-bold" />
+          <a href="index.html"
+            ><img
+              src="./assets/imgs/Y (4).png"
+              width="320px"
+              height="87px" /></a
+          ><br /><br />
         </div>
-      </form>
-      <div class="text-center mt-2">
-        <p>
-          Don't have an account?
-          <a href="register.html" class="color">Click here.</a>
-        </p>
+        <div class="fs-4 fw-bold text-center color">Login</div>
+        <br />
+        <form id="form_login">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control rounded-4"
+              id="email"
+              name="email"
+              placeholder="name@example.com"
+              required
+            />
+            <label for="email">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control rounded-4"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <label for="password">Password</label>
+          </div>
+          <br />
+          <div>
+            <button
+              type="submit"
+              class="login fw-bold d-flex align-items-center justify-content-center"
+            >
+              Login
+            </button>
+          </div>
+          <div class="text-center mt-2">
+            <p>
+              Don't have an account?
+              <a href="register.html" class="color">Click here.</a>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>

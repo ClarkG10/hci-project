@@ -1,4 +1,4 @@
-import { url } from "../utils/utils.";
+import { url } from "../utils/utils.js";
 
 const form_register = document.getElementById("form_register");
 
@@ -20,9 +20,6 @@ form_register.onsubmit = async (e) => {
     }); 
 
     if(response.ok){
-        const json = await response.json(); 
-        console.log(json); 
-        
         form_register.reset();
 
         document.querySelector(".correctbutton").click();
