@@ -1,4 +1,4 @@
 // Backend URL
-const url = "http://hackernews.test";
+const backendURL = "http://hackernews.test";
 
-export {url}
+export {backendURL}

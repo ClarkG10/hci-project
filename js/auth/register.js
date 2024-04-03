@@ -1,4 +1,6 @@
-import { url } from "../utils/utils.js";
+import { backendURL } from "../utils/utils.js";
+import { setRouter } from "../router/router.js";
+setRouter();
 
 const form_register = document.getElementById("form_register");
 
@@ -11,7 +13,7 @@ form_register.onsubmit = async (e) => {
 
     const formData = new FormData(form_register);
 
-    const response = await fetch(url + "/api/user", {
+    const response = await fetch(backendURL + "/api/user", {
         method: "POST", 
         headers: {
             Accept: "application/json",

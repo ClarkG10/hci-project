@@ -24,10 +24,44 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
     <link rel="icon" type="image/x-icon" href="./assets/icoan/favicon.ico" />
     <link rel="stylesheet" href="./css/style1.css" />
-
+    <script type="module" src="./js/dashboard/index.js"></script>
     <meta name="theme-color" content="#31d53d" />
   </head>
   <body>
+    <!-- wrong trigger modal -->
+    <button
+      type="button"
+      class="btn wrongbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#wrongModal"
+    >
+      wrong
+    </button>
+
+    <!-- worng alert modal -->
+    <div
+      class="modal fade"
+      id="wrongModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-1">
+                <img src="./assets/imgs/incorrect.png" alt="" width="30px" />
+              </div>
+              <div class="col-11 mt-1 text-center">
+                <span class="modal-title wrong" id="exampleModalLabel"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 py-3">
       <div class="container-fluid">
         <button
@@ -55,7 +89,7 @@
               height="55px"
             />
           </a>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul id="change_list" class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
                 class="nav-link active me-5 fs-5 orange fw-bold"
@@ -70,15 +104,21 @@
             <li class="nav-item">
               <a class="nav-link me-5 fs-5" href="job.html">Startup Jobs</a>
             </li>
-            <li>
+            <li class="login1 d-block">
               <a href="login.html">
-                <button
-                  type="button"
-                  class="btn-sm mt-1 text-light rounded-2 logout"
-                >
+                <button type="button" class="btn-sm mt-1 text-light rounded-2">
                   Login
                 </button>
               </a>
+            </li>
+            <li class="logout d-none">
+              <button
+                id="btn_logout"
+                type="utton"
+                class="btn-sm mt-1 text-light rounded-2"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
@@ -87,7 +127,7 @@
 
     <div class="mt-5 pt-3 text">
       <div class="row">
-        <div class="col-lg-6 mx-5">
+        <div class="col-lg-6 mx-5 fade-left-to-right">
           <br /><br /><br />
           <p
             class="pb-3 fw-bold background1 display-3 display-md-3 display-lg-2"
@@ -117,14 +157,7 @@
             <p>Welcome! we're excited to have you here!</p>
             <br /><br />
             <div class="animated-container">
-              <button
-                class="border-0 rounded-5"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#rulesCollapse"
-                aria-expanded="false"
-                aria-controls="rulesCollapse"
-              >
+              <button class="border-0 rounded-5" type="button">
                 <img
                   class="flip-scale"
                   src="./assets/imgs/arrow.png"
@@ -136,7 +169,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 mt-lg-0">
+        <div class="col-lg-5 mt-lg-0 fade-up">
           <img
             src="./assets/imgs/Y (1) 1.png"
             class="d-flex"
@@ -148,141 +181,115 @@
         </div>
 
         <div class="row">
-          <div class="Toggle">
-            <div class="container-fluid py-5">
-              <div id="rulesCollapse" class="collapse">
-                <div class="text-center">
-                  <br />
-                  <br />
-                  <h3 class="orange fw-bold">Rules</h3>
-                  <div class="row mt-5 justify-content-center">
-                    <div class="col-lg-2">
-                      <div class="card shadow rounded-4">
-                        <div class="card-body">
-                          <img
-                            src="./assets/imgs/Scales.png"
-                            alt=""
-                            srcset=""
-                          />
-                          <p class="card-text pb-4">
-                            When you engage, Aim to add value
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="card shadow rounded-4">
-                        <div class="card-body">
-                          <img
-                            src="./assets/imgs/Refuse.png"
-                            alt=""
-                            srcset=""
-                          />
-                          <p class="card-text">
-                            Empty or negative comments have no place here keep
-                            it positive or constructive.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="card shadow rounded-4">
-                        <div class="card-body">
-                          <img
-                            src="./assets/imgs/Bowing.png"
-                            alt=""
-                            srcset=""
-                          />
-                          <p class="card-text">
-                            Maintain civility. Treat others with respect, even
-                            in disagreement.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="card shadow rounded-4">
-                        <div class="card-body">
-                          <img
-                            src="./assets/imgs/Idea Sharing.png"
-                            alt=""
-                            srcset=""
-                          />
-                          <p class="card-text">
-                            Share insights, provide additional information, or
-                            offer personal perspectives.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="card shadow rounded-4">
-                        <div class="card-body">
-                          <img
-                            src="./assets/imgs/Do Not Insert.png"
-                            alt=""
-                            srcset=""
-                          />
-                          <p class="card-text">
-                            Refrain from promoting, posting or engaging with
-                            low-quality content.
-                          </p>
-                        </div>
-                      </div>
+          <div class="container-fluid py-5">
+            <div class="text-center">
+              <br />
+              <br />
+              <h3 class="orange fw-bold">Rules</h3>
+              <div class="row mt-5 justify-content-center">
+                <div class="col-lg-2">
+                  <div class="card shadow rounded-4">
+                    <div class="card-body">
+                      <img src="./assets/imgs/Scales.png" alt="" srcset="" />
+                      <p class="card-text pb-4">
+                        When you engage, Aim to add value
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div class="container-fluid pt-5">
-                  <div class="mx-5 shadow rounded-2 bg-white p-4">
-                    <h3 class="text-center orange py-3 pt-4 fw-bold">
-                      List of Content
-                    </h3>
-                    <div class="row fs-5 ps-3 ms-5">
-                      <div class="col-md-6">
-                        <ul>
-                          <li class="pb-3">Technology news and updates</li>
-                          <li class="pb-3">Startup stories and discussions</li>
-                          <li class="pb-3">
-                            Programming articles and tutorials
-                          </li>
-                          <li class="pb-3">
-                            Entrepreneurship insights and advice
-                          </li>
-                          <li class="pb-3">
-                            Job postings in the tech industry
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6">
-                        <ul>
-                          <li class="pb-3">
-                            Discussions on science and innovation
-                          </li>
-                          <li class="pb-3">Product launches and reviews</li>
-                          <li class="pb-3">
-                            AI and machine learning developments
-                          </li>
-                          <li class="pb-3">
-                            Cryptocurrency and blockchain news
-                          </li>
-                          <li class="pb-3">
-                            Design and user experience discussions
-                          </li>
-                        </ul>
-                      </div>
+                <div class="col-lg-2">
+                  <div class="card shadow rounded-4">
+                    <div class="card-body">
+                      <img src="./assets/imgs/Refuse.png" alt="" srcset="" />
+                      <p class="card-text">
+                        Empty or negative comments have no place here keep it
+                        positive or constructive.
+                      </p>
                     </div>
                   </div>
-                  <br /><br />
-                  <hr />
-                  <div class="text-center fw-bold">
-                    <span class="px-3">Guidelines</span>
-                    <span class="px-3">FAQ</span>
-                    <span class="px-3">Lists</span>
-                    <span class="px-3">Security</span>
-                    <span class="px-3">Legal</span>
-                    <span class="px-3">Contact</span>
+                </div>
+                <div class="col-lg-2">
+                  <div class="card shadow rounded-4">
+                    <div class="card-body">
+                      <img src="./assets/imgs/Bowing.png" alt="" srcset="" />
+                      <p class="card-text">
+                        Maintain civility. Treat others with respect, even in
+                        disagreement.
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div class="col-lg-2">
+                  <div class="card shadow rounded-4">
+                    <div class="card-body">
+                      <img
+                        src="./assets/imgs/Idea Sharing.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <p class="card-text">
+                        Share insights, provide additional information, or offer
+                        personal perspectives.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="card shadow rounded-4">
+                    <div class="card-body">
+                      <img
+                        src="./assets/imgs/Do Not Insert.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <p class="card-text">
+                        Refrain from promoting, posting or engaging with
+                        low-quality content.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid pt-5 px-5">
+              <div class="mx-5 shadow rounded-2 bg-white p-4">
+                <h3 class="text-center orange py-3 pt-4 fw-bold">
+                  List of Content
+                </h3>
+                <div class="row fs-5 ps-3 ms-5">
+                  <div class="col-md-6">
+                    <ul>
+                      <li class="pb-3">Technology news and updates</li>
+                      <li class="pb-3">Startup stories and discussions</li>
+                      <li class="pb-3">Programming articles and tutorials</li>
+                      <li class="pb-3">Entrepreneurship insights and advice</li>
+                      <li class="pb-3">Job postings in the tech industry</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li class="pb-3">
+                        Discussions on science and innovation
+                      </li>
+                      <li class="pb-3">Product launches and reviews</li>
+                      <li class="pb-3">AI and machine learning developments</li>
+                      <li class="pb-3">Cryptocurrency and blockchain news</li>
+                      <li class="pb-3">
+                        Design and user experience discussions
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <hr />
+              <div class="text-center">
+                <span class="px-4">Guidelines</span>
+                <span class="px-4">FAQ</span>
+                <span class="px-4">Lists</span>
+                <span class="px-4">Security</span>
+                <span class="px-4">Legal</span>
+                <span class="px-4">Contact</span>
               </div>
             </div>
           </div>

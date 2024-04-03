@@ -293,3 +293,37 @@ hr {
 .flip-scale:hover {
   transform: scale(1.1) rotateX(180deg);
 }
+
+.fade-up {
+  position: relative;
+  animation: fadeUp 2s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-left-to-right {
+  position: relative;
+  animation: fadeLeftToRight 2s ease forwards;
+}
+
+@keyframes fadeLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
