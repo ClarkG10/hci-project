@@ -5,8 +5,6 @@ const form_login = document.getElementById("form_login");
 form_login.onsubmit = async (e) => {
     e.preventDefault();
 
-console.log("untana mapislit ka hhuhu");
-
     document.querySelector("#form_login button").disabled = true;
     document.querySelector("#form_login button").innerHTML = `<div class="spinner-border" role="status" width="30px">
                                                                 </div><span class="ms-2">Loading...</span>`;
@@ -32,6 +30,7 @@ console.log("untana mapislit ka hhuhu");
         document.querySelector(".correctbutton").click();
 
         window.location.pathname = "/index.html"
+        
 
     }else if(response.status == 422){
         const json = await response.json();
@@ -41,4 +40,5 @@ console.log("untana mapislit ka hhuhu");
 
     document.querySelector("#form_login button").disabled = false;
     document.querySelector("#form_login button").innerHTML = `Login`;
+  
 };
