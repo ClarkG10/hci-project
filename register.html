@@ -38,6 +38,74 @@
           class="me-2"
       /></a>
     </div>
+    <!-- wrong trigger modal -->
+    <button
+      type="button"
+      class="btn wrongbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#wrongModal"
+    >
+      wrong
+    </button>
+
+    <!-- worng alert modal -->
+    <div
+      class="modal fade"
+      id="wrongModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-1">
+                <img src="./assets/imgs/incorrect.png" alt="" width="30px" />
+              </div>
+              <div class="col-11 mt-1">
+                <span class="modal-title wrong" id="exampleModalLabel"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end wrong alert modal -->
+
+    <!-- correct trigger modal -->
+    <button
+      type="button"
+      class="btn correctbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#correctModal"
+    >
+      correct
+    </button>
+    <!-- correct alert modal -->
+    <div
+      class="modal fade"
+      id="correctModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="exampleModalLabel">
+              <img
+                src="./assets/imgs/checked.png"
+                alt=""
+                width="25px"
+                class="me-2"
+              />Successfully registered account.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end correct alert modal -->
     <div class="center border rounded-4 shadow-lg bg-white">
       <div class="fs-4 fw-bold text-center color">Create an Account</div>
       <br />
@@ -90,8 +158,13 @@
           <label for="password_confirmation">Password Confirmation</label>
         </div>
         <br />
-        <div class="text-center">
-          <button type="submit" class="login fw-bold">Create an account</button>
+        <div class="">
+          <button
+            type="submit"
+            class="login fw-bold d-flex align-items-center justify-content-center"
+          >
+            Create an account
+          </button>
         </div>
         <div class="text-center mt-2">
           <p>
