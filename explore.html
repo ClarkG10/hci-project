@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="./js/dashboard/index.js"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -63,6 +65,7 @@
             <li class="nav-item">
               <a class="nav-link me-5 fs-5" href="job.html">Startup Jobs</a>
             </li>
+
             <li class="login1 d-block">
               <a href="login.html">
                 <button type="button" class="btn-sm mt-1 text-light rounded-2">
@@ -70,10 +73,33 @@
                 </button>
               </a>
             </li>
-            <li class="logout d-none">
-              <button type="button" class="btn-sm mt-1 text-light rounded-2">
-                Logout
-              </button>
+            <span class="mt-2 fw-bold" id="user_logged"></span>
+            <li class="logout d-none mt-1">
+              <div class="btn-group">
+                <button
+                  class="dropdown-toggle border-0"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="./assets/imgs/person-circle (1).svg"
+                    alt=""
+                    width="25px"
+                  />
+                </button>
+                <ul class="dropdown-menu me-5">
+                  <li>
+                    <button
+                      id="btn_logout"
+                      type="button"
+                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -264,24 +290,28 @@
           <!-- card end -->
           <br /><br />
         </div>
-        <div class="col-lg-3 fixed fixed-right">
+        <div class="col-lg-3 fixed-right">
           <br />
-          <div class="text-center">
-            <img
-              src="./assets/imgs/Y (2).png"
-              alt=""
-              width="190px"
-              height="190px"
-            />
-          </div>
-          <p class="mx-5 mt-3 fw-mediumlight">
-            Feel free to share valuable content, links, or job opportunities
-            here. When you're ready, simply click the
-            <span class="color fw-bold">submit button</span>
-            to make your contribution.
-          </p>
-          <div class="text-center">
-            <a href="submit.html"><button class="btn5">Submit</button></a>
+          <div class="fade-up">
+            <div class="text-center">
+              <img
+                src="./assets/imgs/Y (2).png"
+                alt=""
+                width="190px"
+                height="190px"
+              />
+            </div>
+            <p class="mx-5 mt-3">
+              Feel free to share valuable content, links, or job opportunities
+              here. When you're ready, simply click the
+              <span class="color fw-bold">submit button</span>
+              to make your contribution.
+            </p>
+            <div class="text-center animated-container">
+              <a href="submit.html"
+                ><button class="btn5 shadow">Submit</button></a
+              >
+            </div>
           </div>
         </div>
       </div>

@@ -296,7 +296,7 @@ hr {
 
 .fade-up {
   position: relative;
-  animation: fadeUp 2s ease forwards;
+  animation: fadeUp 1.3s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -313,7 +313,7 @@ hr {
 
 .fade-left-to-right {
   position: relative;
-  animation: fadeLeftToRight 2s ease forwards;
+  animation: fadeLeftToRight 1.3s ease forwards;
 }
 
 @keyframes fadeLeftToRight {
@@ -326,4 +326,23 @@ hr {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.dropdown-menu {
+  min-width: 120px;
+  margin-left: -50px;
+
+  text-align: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  /* Set minimum width for the dropdown menu */
+}
+
+/* Style for the logout button */
+.btn-logout {
+  width: 70%;
+  height: 40px;
+  border: none;
+  transition: background-color 0.3s ease;
 }

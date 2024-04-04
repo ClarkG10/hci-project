@@ -111,14 +111,33 @@
                 </button>
               </a>
             </li>
-            <li class="logout d-none">
-              <button
-                id="btn_logout"
-                type="utton"
-                class="btn-sm mt-1 text-light rounded-2"
-              >
-                Logout
-              </button>
+            <span class="mt-2 fw-bold" id="user_logged"></span>
+            <li class="logout d-none mt-1">
+              <div class="btn-group">
+                <button
+                  class="dropdown-toggle border-0"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="./assets/imgs/person-circle (1).svg"
+                    alt=""
+                    width="25px"
+                  />
+                </button>
+                <ul class="dropdown-menu me-5">
+                  <li>
+                    <button
+                      id="btn_logout"
+                      type="button"
+                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
