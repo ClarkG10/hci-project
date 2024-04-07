@@ -17,6 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Lalezar&family=League+Spartan:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="./js/dashboard/submit.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -32,7 +33,7 @@
     </div>
     <div class="bg-white px-4 py-4 shadow-lg rounded-3 center">
       <h3 class="text4 pt-3 orange text-center fw-bold">SUBMIT FORM</h3>
-      <form action="">
+      <form id="form_submit">
         <div class="form-group mb-3">
           <label for="title" class="form-label text4 fw-bold">Title</label>
           <input
@@ -68,6 +69,15 @@
             style="height: 150px"
           ></textarea>
         </div>
+        <br />
+        <label class="fw-bold form-label" for="role"
+          >What type of content?</label
+        ><br />
+        <select id="role" name="role" class="border-0 pe-5 shadow">
+          <option value="volvo">Stories</option>
+          <option value="saab">Job</option>
+          <option value="fiat">Question</option>
+        </select>
 
         <div class="d-flex justify-content-center pt-4">
           <label id="photo" class="mx-3 text-light rounded-3" for="file"
@@ -81,7 +91,11 @@
             accept=".jpeg, .png"
             required
           />
-          <button type="submit" class="btn6 btn-lg text-light rounded-3">
+          <input type="hidden" id="user_id" name="user_id" />
+          <button
+            type="submit"
+            class="btn6 btn-lg text-light rounded-3 align-items-center d-flex justify-content-center"
+          >
             Submit
           </button>
         </div>

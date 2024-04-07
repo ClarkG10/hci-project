@@ -50,7 +50,7 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link active me-5 fs-5"
+                class="nav-link me-5 fs-5"
                 aria-current="page"
                 href="index.html"
                 >Home</a
@@ -72,9 +72,13 @@
                 </button>
               </a>
             </li>
-            <span class="mt-2 fw-bold" id="user_logged"></span>
-            <li class="logout d-none mt-1">
+
+            <li
+              class="logout d-none mb-2 d-flex align-items-center justify-content-center"
+              id="logging_out"
+            >
               <div class="btn-group">
+                <span class="mt-1 fw-bold" id="user_logged"></span>
                 <button
                   class="dropdown-toggle border-0"
                   type="button"
@@ -87,12 +91,12 @@
                     width="25px"
                   />
                 </button>
-                <ul class="dropdown-menu me-5">
+                <ul class="dropdown-menu">
                   <li>
                     <button
                       id="btn_logout"
                       type="button"
-                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg"
+                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg ms-5"
                     >
                       Logout
                     </button>
@@ -139,10 +143,10 @@
         <div class="col-lg-9 fixed-center1">
           <br />
           <div class="fw-light">
-            <p class="fs-2">
+            <p class="fs-4">
               Discover premier startup opportunities handpicked by Y Combinator.
             </p>
-            <ul class="fs-4">
+            <ul class="fs-5">
               <li>
                 Apply to numerous startup positions using just one profile.
               </li>
@@ -153,8 +157,7 @@
             </ul>
           </div>
           <hr />
-          <br /><br />
-          <h4 class="orange fw-bold">Alphabetical</h4>
+          <h5 class="orange fw-bold">Alphabetical</h5>
           <div class="row">
             <!-- Card start -->
             <div class="col-6">

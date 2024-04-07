@@ -199,7 +199,7 @@ body,
     left: 20px;
     width: 20%;
     height: 100%;
-    overflow-y: auto;
+
     padding-top: 60px;
     /* Adjust as needed */
 }
@@ -211,18 +211,27 @@ body,
     right: 0;
     width: 25%;
     height: 100%;
-    overflow-y: auto;
+
     padding-top: 60px;
     /* Adjust as needed */
 }
 
 .fixed-center {
     margin-left: 300px;
+
 }
 
 .fixed-center1 {
     margin-left: 350px;
 
+}
+
+.url-hidden {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
 }
 
 .btn5 {
@@ -246,6 +255,19 @@ hr {
     border: 0;
     height: 2px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.btn-sm.mt-1.text-light.rounded-2.btn-logout.shadow-lg.ms-5 {
+    margin-left: 80px !important;
+}
+
+.comment_input {
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 15px;
+}
+
+.comment_input:hover {
+    box-shadow: 2px 4px 4px -1px #FF6500;
 }
 
 /* Mobile and Tablet size CSS */

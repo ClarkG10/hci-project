@@ -7,7 +7,7 @@ async function userLogged(){
         document.querySelector(".logout").classList.add("d-block");
         document.querySelector(".login1").classList.remove("d-block");
         document.querySelector(".login1").classList.add("d-none");
-
+    
         const response = await fetch(backendURL + "/api/profile/show", { 
             headers: {
                 Accept: "application/json",
@@ -18,8 +18,9 @@ async function userLogged(){
         if(response.ok){
         const json = await response.json();
         document.getElementById("user_logged").innerHTML = json.name;
+        document.getElementById("user_logged").innerHTML = json.id;
         }
-        } else {
+    } else {
         document.querySelector(".logout").classList.remove("d-block");
         document.querySelector(".logout").classList.add("d-none");
         document.querySelector(".login1").classList.remove("d-none");
@@ -31,6 +32,9 @@ async function logout(){
     const btn_logout = document.getElementById("btn_logout");
 
     btn_logout.onclick = async () => {
+
+    document.querySelector("#logging_out").innerHTML = `<div class="spinner-border" role="status" width="10px" height="10px">
+    </div><span class="ms-2">logging out...</span>`;
     
     const response = await fetch(backendURL + "/api/logout", { 
         headers: {
@@ -39,9 +43,9 @@ async function logout(){
         },
     }); 
     
+    
     if(response.ok){
         localStorage.clear();
-    
         window.location.pathname = "/";
     }else{
         const json = await response.json();

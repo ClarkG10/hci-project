@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
     <script type="module" src="./js/dashboard/explore.js"></script>
-
+    <script type="module" src="./js/utils/utils.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -51,7 +51,7 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link active me-5 fs-5"
+                class="nav-link me-5 fs-5"
                 aria-current="page"
                 href="index.html"
                 >Home</a
@@ -73,9 +73,13 @@
                 </button>
               </a>
             </li>
-            <span class="mt-2 fw-bold" id="user_logged"></span>
-            <li class="logout d-none mt-1">
+
+            <li
+              class="logout d-none mb-2 d-flex align-items-center justify-content-center"
+              id="logging_out"
+            >
               <div class="btn-group">
+                <span class="mt-1 fw-bold" id="user_logged"></span>
                 <button
                   class="dropdown-toggle border-0"
                   type="button"
@@ -88,12 +92,12 @@
                     width="25px"
                   />
                 </button>
-                <ul class="dropdown-menu me-5">
+                <ul class="dropdown-menu">
                   <li>
                     <button
                       id="btn_logout"
                       type="button"
-                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg"
+                      class="btn-sm mt-1 text-light rounded-2 btn-logout shadow-lg ms-5"
                     >
                       Logout
                     </button>
@@ -117,26 +121,30 @@
           />
           <span class="fw-bold ms-2">Filter By</span>
           <br />
-          <div>
-            <input
-              type="text"
-              class="form-control search-input mt-3"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </div>
-          <div class="dropdown mt-2">
-            <button class="dropdown-btn">
-              <span>Sort by</span>
-              <span class="arrow"></span>
-            </button>
-            <div class="dropdown-content">
-              <option class="ps-2" value="New">Alphabetical</option>
-              <option class="ps-2" value="Old">New</option>
-              <option class="ps-2" value="Alphabetical">Old</option>
+          <form id="search_form">
+            <div>
+              <input
+                type="text"
+                class="form-control search-input mt-3"
+                placeholder="Search"
+                aria-label="Search"
+              />
             </div>
-          </div>
+
+            <div class="dropdown mt-2">
+              <button class="dropdown-btn" type="button">
+                <span>Sort by</span>
+                <span class="arrow"></span>
+              </button>
+              <div class="dropdown-content">
+                <option class="ps-2" value="New">Alphabetical</option>
+                <option class="ps-2" value="Old">New</option>
+                <option class="ps-2" value="Alphabetical">Old</option>
+              </div>
+            </div>
+          </form>
         </div>
+
         <div class="col-lg-7 fixed-center px-4">
           <br />
           <div class="text-center">
@@ -145,149 +153,10 @@
               discussions with fellow users”
             </h3>
           </div>
+
           <br /><br />
           <h4 class="orange fw-bold px-4">Alphabetical</h4>
-          <!-- card start -->
-          <div class="card mt-2 mx-4 shadow" style="max-width: 880px">
-            <div class="row g-0">
-              <div class="col-md-2 center1">
-                <img src="..." width="70px" height="70px" />
-              </div>
-              <div class="col-md-9">
-                <div class="card-body">
-                  <span class="size">
-                    Microsoft Is Said to Have Agreed to Acquire GitHub
-                  </span>
-                  <span class="size1">
-                    <a
-                      href="https://www.bloomberg.com/news/articles/2018-06-03/microsoft-is-said-to-have-agreed-to-acquire-coding-site-github"
-                      id="link"
-                      >https://www.bloomberg.com/news/articles/2018-06-03/microsoft-is-said-to-have-agreed-to-acquire-coding-site-github</a
-                    > </span
-                  ><br />
-                  <small class="text-body-secondary">
-                    <span class="mt-3 size1">
-                      <u>By miguelrochefort</u>
-                      <span class="fw-bold px-2">|</span> 6 years ago<span
-                        class="fw-bold px-2"
-                        >|</span
-                      ><a
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                      >
-                        <u>1221 comment</u>
-                      </a>
-
-                      <!-- Modal -->
-                      <div
-                        class="modal fade"
-                        id="staticBackdrop"
-                        data-bs-backdrop="static"
-                        data-bs-keyboard="false"
-                        tabindex="-1"
-                        aria-labelledby="staticBackdropLabel"
-                        aria-hidden="true"
-                      >
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-                            <div class="container-fluid">
-                              <div class="modal-header">
-                                <button
-                                  type="button"
-                                  class="button btn-close fw-bold"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
-                              </div>
-
-                              <div class="modal-body">
-                                <div class="class1">
-                                  <span
-                                    class="text-center fw-bold text-black fs-3"
-                                    id="staticBackdropLabel"
-                                  >
-                                    Microsoft Is Said to Have Agreed to Acquire
-                                    GitHub
-                                  </span>
-                                  <span
-                                    class="text-decoration-underline m-auto Text"
-                                  >
-                                    <a href="..." class="text-black">
-                                      https://www.bloomberg.com/news/articles/2018-06-03/microsoft-is-said-to-have-agreed-to-acquire-coding-site-github</a
-                                    >
-                                  </span>
-                                </div>
-                                <hr />
-                              </div>
-                            </div>
-
-                            <div class="container mb-5 px-5">
-                              <h4 class="py-2 fw-bolder">Comments</h4>
-                              <div class="d-flex align-items-center">
-                                <img
-                                  src="./assets/imgs/person-circle (1).svg"
-                                  class="mb-4 me-3"
-                                  width="13%"
-                                  alt=""
-                                  srcset=""
-                                />
-                                <div>
-                                  <span class="margin">codeMaster42</span>
-                                  <p class="ms-1 mb-0 fw-normal text-black">
-                                    Wow, Microsoft acquiring GitHub? That's like
-                                    Darth Vader taking over the Rebel Alliance.
-                                    Let's hope they don't turn it into the Death
-                                    Star of coding.
-                                  </p>
-                                </div>
-                              </div>
-                              <form action="">
-                                <div
-                                  class="form-floating mt-5 with-icon-container"
-                                >
-                                  <textarea
-                                    type="text"
-                                    class="form-control bg-secondary-subtle"
-                                    placeholder="Leave a comment here"
-                                    id="comment"
-                                    name="comment"
-                                    style="height: 50px"
-                                  ></textarea>
-                                  <label for="comment">Comment Here</label>
-                                  <button
-                                    type="submit"
-                                    class="icon-button"
-                                    onclick="handleIconClick()"
-                                  >
-                                    <img
-                                      src="./assets/imgs/send.svg"
-                                      alt="Icon"
-                                      width="16"
-                                      height="16"
-                                    />
-                                  </button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="fw-bold px-2">|</span> 3532 points
-                    </span>
-                  </small>
-                </div>
-              </div>
-              <div class="col-md-1 text-end pt-2 pe-3">
-                <img
-                  src="./assets/imgs/heart.png"
-                  alt=""
-                  width="20px"
-                  height="20px"
-                />
-              </div>
-            </div>
-          </div>
-          <!-- card end -->
+          <div id="content_form"></div>
           <br /><br />
         </div>
         <div class="col-lg-3 fixed-right">

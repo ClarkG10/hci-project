@@ -48,9 +48,7 @@
 .btn {
 
   font-family: "League Spartan", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
 
 }
 
@@ -91,7 +89,33 @@ body,
   background-color: #efefef;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+}
 
+select:focus {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-shadow: 2px 4px 4px -1px #FF6500;
+  outline: none;
+  border-color: #FF6500;
+}
+
+option {
+  font-size: 16px;
+}
 
 .card {
   height: 100%;
@@ -118,7 +142,6 @@ body,
   padding-bottom: 5px;
 }
 
-
 .nav-link:hover {
   font-family: "League Spartan", sans-serif;
   font-optical-sizing: auto;
@@ -130,6 +153,10 @@ body,
   margin-top: 100px;
   max-width: 100px;
 
+}
+
+.btn-sm.mt-1.text-light.rounded-2.btn-logout.shadow-lg.ms-5 {
+  margin-left: 80px !important;
 }
 
 .center {
@@ -253,6 +280,7 @@ input[type="file"] {
 #url:focus,
 #description:focus {
   border-color: #FF6500;
+  box-shadow: 2px 4px 4px -1px #FF6500;
 }
 
 
@@ -273,7 +301,7 @@ hr {
   }
 
   40% {
-    transform: translateY(-5px);
+    transform: translateY(-15px);
   }
 
   60% {
