@@ -68,7 +68,9 @@ body,
 
 }
 
-
+.navbar {
+    background: #EFEFEF;
+}
 
 .text1 {
     font-size: 21px;
@@ -175,6 +177,10 @@ body,
     box-shadow: none;
 }
 
+.eraseline {
+    text-decoration: none;
+}
+
 #link {
     color: #000000;
 }
@@ -218,7 +224,7 @@ body,
 
 .fixed-center {
     margin-left: 300px;
-
+    margin-top: 30px;
 }
 
 .fixed-center1 {

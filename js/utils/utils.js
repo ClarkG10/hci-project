@@ -3,10 +3,13 @@ const backendURL = "http://hackernews.test";
 
 async function userLogged(){
     if(localStorage.getItem("token")) {
+        document.querySelector("#user_logged").innerHTML = `<div class="spinner-border~" role="status" width="10px" height="10px">
+        </div>`;
         document.querySelector(".logout").classList.remove("d-none");
         document.querySelector(".logout").classList.add("d-block");
         document.querySelector(".login1").classList.remove("d-block");
         document.querySelector(".login1").classList.add("d-none");
+
     
         const response = await fetch(backendURL + "/api/profile/show", { 
             headers: {
@@ -14,11 +17,9 @@ async function userLogged(){
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }); 
-    
         if(response.ok){
         const json = await response.json();
         document.getElementById("user_logged").innerHTML = json.name;
-        document.getElementById("user_logged").innerHTML = json.id;
         }
     } else {
         document.querySelector(".logout").classList.remove("d-block");
@@ -33,7 +34,7 @@ async function logout(){
 
     btn_logout.onclick = async () => {
 
-    document.querySelector("#logging_out").innerHTML = `<div class="spinner-border" role="status" width="10px" height="10px">
+    document.querySelector(".logout").innerHTML = `<div class="spinner-border" role="status" width="10px" height="10px">
     </div><span class="ms-2">logging out...</span>`;
     
     const response = await fetch(backendURL + "/api/logout", { 

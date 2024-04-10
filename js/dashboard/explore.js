@@ -5,10 +5,14 @@ logout();
 // Initialize counts for each content item
 const contentCounts = {};
 
-async function getDatas() {
+async function getDatas(keyword = "") {
     try {
+        console.log(keyword)
+        document.querySelector("#content_form").innerHTML = `<div class="d-flex align-items-center justify-content-center"><div class="spinner-border text-center" role="status" width="10px" height="10px">
+        </div><span class="ms-2 fw-bold">Please Wait...</span></div>`;
+
         // Fetch content and comments
-        const content_response = await fetch(backendURL + "/api/content", {
+        const content_response = await fetch(backendURL + "/api/content?keyword=" + keyword, {
             headers: {
                 accept: "application/json",
             },
@@ -37,16 +41,16 @@ async function getDatas() {
             if (!contentCounts[contentItem.content_id]) {
                 contentCounts[contentItem.content_id] = 0;
             }
-
+            let count = 0;
             container += `
-                <div class="card mt-2 mx-4 shadow" style="max-width: 880px">
+                <div class="card mt-2 mx-4 shadow fade-up" style="max-width: 880px">
                     <div class="row g-0">
-                        <div class="col-md-2 center1">
+                        <div class="col-md-1 ms-3 center1">
                             <img src="${backendURL}/storage/${contentItem.image}" width="70px" height="70px" />
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
-                                <span class="size">${contentItem.title}</span>
+                                <span class="size">${contentItem.title} <small class="text-muted ">(${contentItem.role})</small></span>
                                 <span class="size1">
                                     <a href="${contentItem.url}" id="link" class="url-hidden d-flex">${contentItem.url}</a>
                                 </span>
@@ -55,12 +59,12 @@ async function getDatas() {
                                         <u>By ${author}</u>
                                         <span class="fw-bold px-2">|</span>${timeAgo}<span class="fw-bold px-2">|</span>
                                         <a data-bs-toggle="modal" data-bs-target="#modal-${contentItem.content_id}"><u>${contentComments.length} comments</u></a>
-                                    </span><span class="fw-bold px-2">|</span>${contentCounts[contentItem.content_id]} points
+                                    </span><span class="fw-bold px-2">|</span>${count} points
                                 </small>
                             </div>
                         </div>
-                        <div class="col-1 text-end pe-3 pt-2">
-                            <button class="border-0 bg-white heart-icon" data-content-id="${contentItem.content_id}">
+                        <div class="col-1 text-end ps-5 ms-4 pt-2">
+                            <button class="border-0 bg-white heart-icon" data-content-id="${contentItem.content_id}" type="button" onclick="alertclick1()">
                                 <img src="./assets/imgs/heart${contentCounts[contentItem.content_id] > 0 ? '1' : ''}.png" alt="" width="20px">
                             </button>
                         </div>
@@ -84,7 +88,7 @@ async function getDatas() {
                                 <!-- Comment section -->
                                 ${contentComments ? renderComments(contentComments, contentItem.user_id) : 'No comments yet.'}
                             </div>
-                            <div class="container d-none comment_form">
+                            <div class="container comment_form">
                                 <div class="row">
                                     <!-- Add comment form -->
                                     <form id="comment_form_${contentItem.content_id}">
@@ -107,10 +111,6 @@ async function getDatas() {
         
         document.getElementById("content_form").innerHTML = container;
 
-        if(localStorage.getItem("token")){
-            document.querySelector(".comment_form").classList.remove("d-none");
-            document.querySelector(".comment_form").classList.add("d-block"); 
-        }
         // Setup form submission for each content item
         for (const contentItem of content) {
             const commentForm = document.getElementById(`comment_form_${contentItem.content_id}`);
@@ -131,6 +131,7 @@ async function getDatas() {
                     const json = await response.json(); 
                     // Reset the form after submission
                     commentForm.reset();
+                    
                     // Optionally, update the comments section with the newly added comment
                     const commentsSection = document.getElementById(`modal-${contentItem.content_id}-label`);
                     const newCommentHTML = `
@@ -197,7 +198,21 @@ async function getDatas() {
             return "Unknown"; // Return "Unknown" if there's an error in fetching user data
         }
     }
+ 
+    const search_form = document.getElementById("search_form");
+    search_form.onsubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(search_form);
+    const keyword = formData.get("keyword");
+
+    console.log(formData)
+    // Call getDatas with the keyword
+    getDatas(keyword);
 }
+
+}
+
 
 function renderComments(comments, userId) {
     let html = '';

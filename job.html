@@ -16,7 +16,6 @@
       rel="stylesheet"
     />
     <script type="module" src="./js/dashboard/job.js"></script>
-
     <title>Document</title>
   </head>
   <body>
@@ -75,7 +74,6 @@
 
             <li
               class="logout d-none mb-2 d-flex align-items-center justify-content-center"
-              id="logging_out"
             >
               <div class="btn-group">
                 <span class="mt-1 fw-bold" id="user_logged"></span>
@@ -158,37 +156,7 @@
           </div>
           <hr />
           <h5 class="orange fw-bold">Alphabetical</h5>
-          <div class="row">
-            <!-- Card start -->
-            <div class="col-6">
-              <div class="card mt-2 shadow" style="max-width: 580px">
-                <div class="row g-0">
-                  <div class="col-md-2 center1 rounded-3">
-                    <img src="..." width="70px" height="70px" />
-                  </div>
-                  <div class="col-md-10">
-                    <div class="card-body">
-                      <span class="fw-bold"
-                        >Emerge (YC W21) is hiring a Growth Engineer (remote)
-                      </span>
-                      <a
-                        href="https://www.emergetools.com/careers/jobs/growth-engineer"
-                        id="link"
-                      >
-                        <small
-                          >https://www.emergetools.com/careers/jobs/growth-engineer</small
-                        ></a
-                      >
-                      <a href="login.html">
-                        <button class="btn1 mt-2">Apply</button></a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- card end -->
-          </div>
+          <div class="row" id="job_container"></div>
           <br /><br />
         </div>
       </div>

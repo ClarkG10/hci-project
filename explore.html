@@ -21,6 +21,41 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- wrong trigger modal -->
+    <button
+      type="button"
+      class="btn wrongbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#wrongModal"
+    >
+      wrong
+    </button>
+    <!-- worng alert modal -->
+    <div
+      class="modal fade"
+      id="wrongModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-1">
+                <img src="./assets/imgs/incorrect.png" alt="" width="30px" />
+              </div>
+              <div class="col-11 mb-4">
+                <span class="modal-title wrong" id="exampleModalLabel"></span
+                >You have yet to
+                <a href="login.html" style="color: #ff6500">sign up</a>. Please
+                sign up first.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 py-3">
       <div class="container-fluid">
         <button
@@ -76,7 +111,6 @@
 
             <li
               class="logout d-none mb-2 d-flex align-items-center justify-content-center"
-              id="logging_out"
             >
               <div class="btn-group">
                 <span class="mt-1 fw-bold" id="user_logged"></span>
@@ -125,28 +159,32 @@
             <div>
               <input
                 type="text"
-                class="form-control search-input mt-3"
+                class="mt-3 search-input"
                 placeholder="Search"
-                aria-label="Search"
               />
-            </div>
-
-            <div class="dropdown mt-2">
-              <button class="dropdown-btn" type="button">
-                <span>Sort by</span>
-                <span class="arrow"></span>
+              <button
+                type="submit"
+                class="btn mt-2 invisible text-white"
+                style="position: relative"
+              >
+                Search
               </button>
-              <div class="dropdown-content">
-                <option class="ps-2" value="New">Alphabetical</option>
-                <option class="ps-2" value="Old">New</option>
-                <option class="ps-2" value="Alphabetical">Old</option>
-              </div>
             </div>
           </form>
+          <div class="dropdown mt-2">
+            <button class="dropdown-btn" type="button">
+              <span>Sort by</span>
+              <span class="arrow"></span>
+            </button>
+            <div class="dropdown-content">
+              <option class="ps-2" value="New">Alphabetical</option>
+              <option class="ps-2" value="Old">New</option>
+              <option class="ps-2" value="Alphabetical">Old</option>
+            </div>
+          </div>
         </div>
 
         <div class="col-lg-7 fixed-center px-4">
-          <br />
           <div class="text-center">
             <h3>
               “Discover captivating links and content, then engage in lively
@@ -177,14 +215,29 @@
               to make your contribution.
             </p>
             <div class="text-center animated-container">
-              <a href="submit.html"
-                ><button class="btn5 shadow">Submit</button></a
-              >
+              <button class="btn5 shadow" onclick="alertclick()">Submit</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      function alertclick() {
+        if (localStorage.getItem("token")) {
+          window.location.pathname = "/submit.html";
+        } else {
+          document.querySelector(".wrongbutton").click();
+        }
+      }
+
+      function alertclick1() {
+        if (localStorage.getItem("token")) {
+          count++;
+        } else {
+          document.querySelector(".wrongbutton").click();
+        }
+      }
+    </script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

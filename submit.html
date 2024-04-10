@@ -21,6 +21,37 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- correct trigger modal -->
+    <button
+      type="button"
+      class="btn correctbutton d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#correctModal"
+    >
+      correct
+    </button>
+    <!-- correct alert modal -->
+    <div
+      class="modal fade"
+      id="correctModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title mb-4" id="exampleModalLabel">
+              <div class="text-center"><img src="./assets/imgs/heart1.png" alt="" width="50px" />
+                <br />
+                Thank you for Submitting!
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="mt-2">
       <a href="explore.html" class="orange ms-3 fw-bold"
         ><img
@@ -33,7 +64,10 @@
     </div>
     <div class="bg-white px-4 py-4 shadow-lg rounded-3 center">
       <h3 class="text4 pt-3 orange text-center fw-bold">SUBMIT FORM</h3>
-      <form id="form_submit">
+      <form id="form_submit" onclick="getUser()">
+        <div id="id">
+          <input type="hidden" id="user_id" name="user_id" />
+        </div>
         <div class="form-group mb-3">
           <label for="title" class="form-label text4 fw-bold">Title</label>
           <input
@@ -74,9 +108,9 @@
           >What type of content?</label
         ><br />
         <select id="role" name="role" class="border-0 pe-5 shadow">
-          <option value="volvo">Stories</option>
-          <option value="saab">Job</option>
-          <option value="fiat">Question</option>
+          <option value="Stories">Stories</option>
+          <option value="Job">Job</option>
+          <option value="Question">Question</option>
         </select>
 
         <div class="d-flex justify-content-center pt-4">
@@ -91,7 +125,7 @@
             accept=".jpeg, .png"
             required
           />
-          <input type="hidden" id="user_id" name="user_id" />
+
           <button
             type="submit"
             class="btn6 btn-lg text-light rounded-3 align-items-center d-flex justify-content-center"
@@ -101,6 +135,20 @@
         </div>
       </form>
     </div>
+    <script>
+    async function getUser(){
+    if (localStorage.getItem("token")) {
+      const profileResponse = await fetch("http://hackernews.test/api/profile/show", {
+          headers: {
+              Accept: "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+      });
+      const profileData = await profileResponse.json();
+      document.getElementById("user_id").value = profileData.id;
+}
+}
+</script>
   </body>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </html>
