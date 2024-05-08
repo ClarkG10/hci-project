@@ -3,7 +3,7 @@ const backendURL = "http://hackernews.test";
 
 async function userLogged(){
     if(localStorage.getItem("token")) {
-        document.querySelector("#user_logged").innerHTML = `<div class="spinner-border~" role="status" width="10px" height="10px">
+        document.querySelector("#user_logged").innerHTML = `<div class="spinner-border" role="status" width="10px" height="10px">
         </div>`;
         document.querySelector(".logout").classList.remove("d-none");
         document.querySelector(".logout").classList.add("d-block");

@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
     <script type="module" src="./js/dashboard/submit.js"></script>
-    <title>Document</title>
+    <title>Hacker news</title>
   </head>
   <body>
     <!-- correct trigger modal -->
@@ -40,13 +40,14 @@
     >
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-          <div class="modal-header">
-            <p class="modal-title mb-4" id="exampleModalLabel">
-              <div class="text-center"><img src="./assets/imgs/heart1.png" alt="" width="50px" />
-                <br />
-                Thank you for Submitting!
-              </div>
-            </p>
+          <div class="modal-title mb-2" id="exampleModalLabel">
+            <div
+              class="text-center align-items-center justify-content-center mt-2"
+            >
+              <img src="./assets/imgs/heart1.png" alt="" width="40px" />
+              <br />
+              Thank you for Submitting!
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +64,7 @@
       /></a>
     </div>
     <div class="bg-white px-4 py-4 shadow-lg rounded-3 center">
-      <h3 class="text4 pt-3 orange text-center fw-bold">SUBMIT FORM</h3>
+      <h3 class="text4 pt-3 orange text-center fw-bold">Submit Form</h3>
       <form id="form_submit" onclick="getUser()">
         <div id="id">
           <input type="hidden" id="user_id" name="user_id" />
@@ -72,7 +73,7 @@
           <label for="title" class="form-label text4 fw-bold">Title</label>
           <input
             type="text"
-            class="form-control rectangle-73 shadow"
+            class="form-control rectangle-73"
             id="title"
             name="title"
             placeholder="Input title"
@@ -83,7 +84,7 @@
           <label for="url" class="form-label fw-bold">Url</label>
           <input
             type="text"
-            class="form-control rectangle-73 shadow"
+            class="form-control rectangle-73"
             id="url"
             name="url"
             placeholder="Share link of the website"
@@ -96,7 +97,7 @@
             >Description</label
           >
           <textarea
-            class="form-control rectangle-73 shadow"
+            class="form-control rectangle-73"
             id="description"
             name="description"
             placeholder="Description(Optional)"
@@ -107,7 +108,7 @@
         <label class="fw-bold form-label" for="role"
           >What type of content?</label
         ><br />
-        <select id="role" name="role" class="border-0 pe-5 shadow">
+        <select id="role" name="role" class="border-0 pe-5">
           <option value="Stories">Stories</option>
           <option value="Job">Job</option>
           <option value="Question">Question</option>
@@ -136,19 +137,22 @@
       </form>
     </div>
     <script>
-    async function getUser(){
-    if (localStorage.getItem("token")) {
-      const profileResponse = await fetch("http://hackernews.test/api/profile/show", {
-          headers: {
-              Accept: "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-      });
-      const profileData = await profileResponse.json();
-      document.getElementById("user_id").value = profileData.id;
-}
-}
-</script>
+      async function getUser() {
+        if (localStorage.getItem("token")) {
+          const profileResponse = await fetch(
+            "http://hackernews.test/api/profile/show",
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }
+          );
+          const profileData = await profileResponse.json();
+          document.getElementById("user_id").value = profileData.id;
+        }
+      }
+    </script>
   </body>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </html>

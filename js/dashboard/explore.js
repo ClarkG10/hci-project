@@ -25,9 +25,10 @@ async function getDatas(keyword = "") {
             },
         });
         const comments = await comment_response.json();
-
+        console.log(content)
         let container = "";
         for (const contentItem of content) {
+           
             // Format Date
             const timeAgo = formatTimeDifference(contentItem.created_at);
 
@@ -36,7 +37,7 @@ async function getDatas(keyword = "") {
 
             // Filter comments for the current content item
             const contentComments = comments.filter(comment => comment.content_id === contentItem.content_id);
-
+            console.log(contentComments);
             // Initialize count for this content item
             if (!contentCounts[contentItem.content_id]) {
                 contentCounts[contentItem.content_id] = 0;
@@ -249,7 +250,7 @@ function formatTimeDifference(date) {
     if (secondsDifference < 60) {
         return '1 second ago';
     } else if (minutesDifference < 2) {
-        return `${minutesDifference} minutes ago`;
+        return `${minutesDifference} minute ago`;
     } else if (minutesDifference < 60) {
         return `${minutesDifference} minutes ago`;
     } else if (hoursDifference < 2) {
