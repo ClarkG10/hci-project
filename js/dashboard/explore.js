@@ -18,9 +18,10 @@ async function getDatas(keyword = "") {
                   Accept: "application/json",
                   Authorization: "Bearer " + localStorage.getItem("token"),
                 },
-              }
-            );
+              });
+       
             const profileData = await profileResponse.json();
+           
           
         // Fetch content and comments
         const content_response = await fetch(backendURL + "/api/content?keyword=" + keyword, {
@@ -101,7 +102,7 @@ async function getDatas(keyword = "") {
                             <div class="modal-body" id="modal-${contentItem.content_id}-label">
                                 
                                 <!-- Comment section -->
-                                ${contentComments ? renderComments(contentComments) : 'No comments yet.'}
+                                ${contentComments ? await renderComments(contentComments) : 'No comments yet.'}
                             </div>
                             <div class="container comment_form">
                                 <div class="row">
@@ -125,7 +126,7 @@ async function getDatas(keyword = "") {
         }
         
         document.getElementById("content_form").innerHTML = container;
-        contentForm.reset();
+       
         // Setup form submission for each content item
         for (const contentItem of content) {
             const commentForm = document.getElementById(`comment_form_${contentItem.content_id}`);
@@ -142,33 +143,58 @@ async function getDatas(keyword = "") {
                     body: formData,
                 }); 
 
-                if (response.ok) {
+                const response1 = await fetch(backendURL + "/api/user", {
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+                    
+
                     const json = await response.json(); 
+                    const json1 = await response1.json();
+                    console.log(json1)
+                    let i;
                     // Reset the form after submission
-                  
-                    commentForm.reset();
+                    for(let i = 0; i < json1.length; i++){
+                    if (json1[i].id == json.user_id) {
+                        commentForm.reset();
                     
-                    
-                    // Optionally, update the comments section with the newly added comment
-                    const commentsSection = document.getElementById(`modal-${contentItem.content_id}-label`);
-                    const newCommentHTML = `
-                        <div class="card mb-2 border-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
-                                <div class="col-11">
-                                <small>Anonymous#${json.user_id}</small><br>
-                                    <span class="card-text">${formData.get('comment')}</span>
-                                    <small class="card-subtitle mb-2 text-muted"> (${formatTimeDifference(new Date())})</small>
+                        // Optionally, update the comments section with the newly added comment
+                        const commentsSection = document.getElementById(`modal-${contentItem.content_id}-label`);
+                        const newCommentHTML = `
+                            <div class="card mb-2 border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
+                                    <div class="col-11">
+                                    <small>${json1[i].name}</small><br>
+                                        <span class="card-text">${formData.get('comment')}</span>
+                                        <small class="card-subtitle mb-2 text-muted"> (${formatTimeDifference(new Date())})</small>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
-                    </div>`;
-                    commentsSection.insertAdjacentHTML('beforeend', newCommentHTML);
-                 
-                } else {
-                    const json = await response.json(); 
-                    console.log(json);
+                            </div>  
+                        </div>`;
+                        commentsSection.insertAdjacentHTML('beforeend', newCommentHTML);
+                    } else if(localStorage.getItem("token") === null){
+                        commentForm.reset();
+                    
+                        // Optionally, update the comments section with the newly added comment
+                        const commentsSection = document.getElementById(`modal-${contentItem.content_id}-label`);
+                        const newCommentHTML = `
+                            <div class="card mb-2 border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
+                                    <div class="col-11">
+                                    <small>Anonymous</small><br>
+                                        <span class="card-text">${formData.get('comment')}</span>
+                                        <small class="card-subtitle mb-2 text-muted"> (${formatTimeDifference(new Date())})</small>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>`;
+                        commentsSection.insertAdjacentHTML('beforeend', newCommentHTML);
+                    }
                 }
             }
         }
@@ -200,7 +226,6 @@ async function getDatas(keyword = "") {
         const response = await fetch(backendURL + "/api/user", {
             headers: {
                 Accept: "application/json",
-                Authorization: "Bearer " + localStorage.getItem("token"),
             },
         });
 
@@ -213,7 +238,6 @@ async function getDatas(keyword = "") {
                 return "Unknown"; // Return "Unknown" if user is not found
             }
         } else {
-            console.error("Error fetching user data");
             return "Unknown"; // Return "Unknown" if there's an error in fetching user data
         }
     }
@@ -233,26 +257,71 @@ console.log(search_form)
 }
 
 
-function renderComments(comments) {
+async function renderComments(comments) {
     let html = '';
-    comments.forEach((comment) => {
+
+    // Loop through each comment
+    for (const comment of comments) {
         const timeAgo = formatTimeDifference(comment.created_at);
-        html += `
-            <div class="card mb-2 border-0">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
-                        <div class="col-11">
-                        <small>Anonymous#${comment.user_id}</small><br>
-                            <span class="card-text">${comment.comment}</span>
-                            <small class="card-subtitle mb-2 text-muted"> (${timeAgo})</small>
-                        </div>
-                    </div>
-                </div>  
-            </div>`;
-    });
-    return html;
+
+        try {
+            // Fetch user data based on comment's user_id
+            const response = await fetch(backendURL + "/api/user", {
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+
+            if (response.ok) {
+                const users = await response.json();
+
+                // Find the user corresponding to the comment's user_id
+                const user = users.find(user => user.id === comment.user_id);
+
+                // Construct HTML based on whether user is found or not
+                if (user) {
+                    html += `
+                        <div class="card mb-2 border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
+                                    <div class="col-11">
+                                        <small>${user.name}</small><br>
+                                        <span class="card-text">${comment.comment}</span>
+                                        <small class="card-subtitle mb-2 text-muted"> (${timeAgo})</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                } else {
+                    // User not found, render as Anonymous
+                    html += `
+                        <div class="card mb-2 border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
+                                    <div class="col-11">
+                                        <small>Anonymous</small><br>
+                                        <span class="card-text">${comment.comment}</span>
+                                        <small class="card-subtitle mb-2 text-muted"> (${timeAgo})</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                }
+            } else {
+                console.error("Failed to fetch user data");
+                // Handle fetch failure gracefully
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            // Handle error in fetch operation
+        }
+    }
+
+    return html; // Return the accumulated HTML
 }
+
 
 function formatTimeDifference(date) {
     const currentDate = new Date();
