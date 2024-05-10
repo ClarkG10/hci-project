@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 py-3">
+    <nav class="navbar fixed-top navbar-expand-lg shadow">
       <div class="container-fluid">
         <button
           class="navbar-toggler"
@@ -93,7 +93,9 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link me-5 fs-5 orange fw-bold" href="explore.html"
+              <a
+                class="nav-link me-5 fs-5 orange fw-semibold"
+                href="explore.html"
                 >Explore</a
               >
             </li>
@@ -153,7 +155,7 @@
             width="20px"
             height="20px"
           />
-          <span class="fw-bold ms-2">Filter By</span>
+          <span class="fw-bold ms-1">Filter By</span>
           <br />
           <form id="search_form">
             <div>
@@ -179,9 +181,14 @@
 
         <div class="col-lg-7 fixed-center px-4">
           <div class="text-center mx-5">
-            <h4>
-              “Discover captivating links and content, then engage in lively
-              discussions with fellow users”
+            <h4
+              style="
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+                  serif;
+              "
+            >
+              "Discover captivating links and content, then engage in lively
+              discussions with fellow users"
             </h4>
           </div>
 
@@ -201,7 +208,13 @@
                 height="190px"
               />
             </div>
-            <p class="mx-5 mt-3">
+            <p
+              class="mx-5 mt-3"
+              style="
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+                  serif;
+              "
+            >
               Feel free to share valuable content, links, or job opportunities
               here. When you're ready, simply click the
               <span class="color fw-bold">submit button</span>
@@ -224,9 +237,7 @@
       }
 
       function alertclick1() {
-        if (localStorage.getItem("token")) {
-          count++;
-        } else {
+        if (!localStorage.getItem("token")) {
           document.querySelector(".wrongbutton").click();
         }
       }

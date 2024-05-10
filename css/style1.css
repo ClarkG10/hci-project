@@ -250,7 +250,7 @@ option {
 .btn6 {
 
   background: #ff6500;
-  width: 185px;
+  width: 450px;
   height: 50px;
   border: none;
   font-weight: bold;
@@ -268,13 +268,13 @@ option {
   font-weight: bold;
 }
 
-input[type="file"] {
+/* input[type="file"] {
   display: none;
   width: 99%;
   height: 50px;
   border: none;
   border-radius: 15px;
-}
+} */
 
 #title:focus,
 #url:focus,

@@ -78,11 +78,14 @@ body,
     /* Adjust the maximum width as needed */
 }
 
+
+
 .text {
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+
 }
 
 .navbar-brand,
@@ -200,7 +203,7 @@ body,
 
 .fixed-left {
     position: fixed;
-    top: 60px;
+    top: 45px;
     /* Adjust as needed */
     left: 20px;
     width: 20%;

@@ -9,8 +9,19 @@ async function getDatas(keyword = "") {
     try {
         console.log(keyword)
         document.querySelector("#content_form").innerHTML = `<div class="d-flex align-items-center justify-content-center"><div class="spinner-border text-center" role="status" width="10px" height="10px">
-        </div><span class="ms-2 fw-bold">Please Wait...</span></div>`;
+        </div></div>`;
 
+            const profileResponse = await fetch( backendURL +
+              "/api/profile/show",
+              {
+                headers: {
+                  Accept: "application/json",
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+              }
+            );
+            const profileData = await profileResponse.json();
+          
         // Fetch content and comments
         const content_response = await fetch(backendURL + "/api/content?keyword=" + keyword, {
             headers: {
@@ -27,10 +38,12 @@ async function getDatas(keyword = "") {
         const comments = await comment_response.json();
         console.log(content)
         let container = "";
-        for (const contentItem of content) {
-           
+        for (let i = 0; i < content.length; i++) {
+            const contentItem = content[i];
+
             // Format Date
             const timeAgo = formatTimeDifference(contentItem.created_at);
+            console.log(profileData.id)
 
             // Get username
             const author = await username(contentItem.user_id);
@@ -59,7 +72,7 @@ async function getDatas(keyword = "") {
                                     <span class="mt-3 size1">
                                         <u>By ${author}</u>
                                         <span class="fw-bold px-2">|</span>${timeAgo}<span class="fw-bold px-2">|</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#modal-${contentItem.content_id}"><u>${contentComments.length} comments</u></a>
+                                        <a data-bs-toggle="modal" data-bs-target="#modal-${contentItem.content_id}"><u style="cursor: pointer;">${contentComments.length} comments</u></a>
                                     </span><span class="fw-bold px-2">|</span>${count} points
                                 </small>
                             </div>
@@ -74,7 +87,7 @@ async function getDatas(keyword = "") {
                 
                 <!-- Modal -->
                 <div class="modal fade" id="modal-${contentItem.content_id}" tabindex="-1" aria-labelledby="modal-${contentItem.content_id}-label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content bg-white">
                             <button type="button" class="btn-close ms-auto align-items-end justify-content-end me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
                             <div class="container text-center">
@@ -83,18 +96,19 @@ async function getDatas(keyword = "") {
                                     <a href="${contentItem.url}" id="link" class="url-hidden">(${contentItem.url})</a>
                                 </div>
                             </div>
+                            <div><h5 class="fw-bold mt-2 ms-3">Comment Section</h5>
+                            <hr /></div>
                             <div class="modal-body" id="modal-${contentItem.content_id}-label">
-                                <h5 class="fw-bold">Comment Section</h5>
-                                <hr />
+                                
                                 <!-- Comment section -->
-                                ${contentComments ? renderComments(contentComments, contentItem.user_id) : 'No comments yet.'}
+                                ${contentComments ? renderComments(contentComments) : 'No comments yet.'}
                             </div>
                             <div class="container comment_form">
                                 <div class="row">
                                     <!-- Add comment form -->
                                     <form id="comment_form_${contentItem.content_id}">
                                         <div style="position: relative;">
-                                            <input type="hidden" name="user_id" id="user_id_${contentItem.content_id}" value="${contentItem.user_id}" />
+                                            <input type="hidden" name="user_id" id="user_id_${contentItem.content_id}" value="${profileData.id}" />
                                             <input type="hidden" name="content_id" id="content_id" value="${contentItem.content_id}" />
                                             <div class="comment_input"><textarea class="form-control mb-2" rows="2" id="comment" name="comment" placeholder="Leave a comment"></textarea></div>
                                             <!-- Arrow emoji button -->
@@ -111,14 +125,14 @@ async function getDatas(keyword = "") {
         }
         
         document.getElementById("content_form").innerHTML = container;
-
+        contentForm.reset();
         // Setup form submission for each content item
         for (const contentItem of content) {
             const commentForm = document.getElementById(`comment_form_${contentItem.content_id}`);
+
             commentForm.onsubmit = async (e) => {
                 e.preventDefault(); // Prevent page refresh
                 const formData = new FormData(commentForm);
-
                 const response = await fetch(backendURL + "/api/comment", {
                     method: "POST", 
                     headers: {
@@ -131,7 +145,9 @@ async function getDatas(keyword = "") {
                 if (response.ok) {
                     const json = await response.json(); 
                     // Reset the form after submission
+                  
                     commentForm.reset();
+                    
                     
                     // Optionally, update the comments section with the newly added comment
                     const commentsSection = document.getElementById(`modal-${contentItem.content_id}-label`);
@@ -141,6 +157,7 @@ async function getDatas(keyword = "") {
                             <div class="row">
                                 <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
                                 <div class="col-11">
+                                <small>Anonymous#${json.user_id}</small><br>
                                     <span class="card-text">${formData.get('comment')}</span>
                                     <small class="card-subtitle mb-2 text-muted"> (${formatTimeDifference(new Date())})</small>
                                 </div>
@@ -148,6 +165,7 @@ async function getDatas(keyword = "") {
                         </div>  
                     </div>`;
                     commentsSection.insertAdjacentHTML('beforeend', newCommentHTML);
+                 
                 } else {
                     const json = await response.json(); 
                     console.log(json);
@@ -203,7 +221,7 @@ async function getDatas(keyword = "") {
     const search_form = document.getElementById("search_form");
     search_form.onsubmit = async (e) => {
     e.preventDefault();
-
+console.log(search_form)
     const formData = new FormData(search_form);
     const keyword = formData.get("keyword");
 
@@ -215,7 +233,7 @@ async function getDatas(keyword = "") {
 }
 
 
-function renderComments(comments, userId) {
+function renderComments(comments) {
     let html = '';
     comments.forEach((comment) => {
         const timeAgo = formatTimeDifference(comment.created_at);
@@ -225,6 +243,7 @@ function renderComments(comments, userId) {
                     <div class="row">
                         <div class="col-1 center1"><img src="./assets/imgs/person-circle (1).svg" width="30px" height="30px" /></div>
                         <div class="col-11">
+                        <small>Anonymous#${comment.user_id}</small><br>
                             <span class="card-text">${comment.comment}</span>
                             <small class="card-subtitle mb-2 text-muted"> (${timeAgo})</small>
                         </div>
