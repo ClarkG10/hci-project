@@ -36,8 +36,6 @@ async function getDatas(){
                     <div class="row">
                     <div class="col-9"><a class=" eraseline " href="${element.url}"><button class="btn1 mt-2">Apply</button></a></div>
                     <div class="col-3 mt-3"> <small class="">${timeAgo}</small></div></div>
-                    
-                   
                     </div>
                 </div>
             </div>
