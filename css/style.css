@@ -125,6 +125,10 @@ body,
     font-size: 13px;
 }
 
+.shadoworange:hover {
+    box-shadow: 0px 5px 20px -2px #575757;
+}
+
 .btn:hover {
     background-color: #FF6500;
     /* Maintain the same background color on hover */
@@ -368,6 +372,11 @@ hr {
     /* Set minimum width for the dropdown menu */
 }
 
+.font-family {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+
 /* Style for the logout button */
 .btn-logout {
     width: 70%;
@@ -415,4 +424,26 @@ hr {
 .animated-container {
     animation: bounce 2s infinite;
 
+}
+
+/* For WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 12px;
+    /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent
+        /* color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FF6500;
+    border-radius: 15px;
+    border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: darkorange;
+    /* color of the scrollbar on hover */
 }

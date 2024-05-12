@@ -25,7 +25,17 @@ async function getDatas(keyword = "") {
                 profileData.id = 2;
             }
 
-            console.log(profileData.id);
+            const pointsResponse = await fetch( backendURL +
+                "/api/profile/show",
+                {
+                  headers: {
+                    Accept: "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                  },
+                });
+  
+              const points = await pointsResponse.json();
+
         // Fetch content and comments
         const content_response = await fetch(backendURL + "/api/content?keyword=" + keyword, {
             headers: {
@@ -59,11 +69,11 @@ async function getDatas(keyword = "") {
                 <div class="card mt-2 mx-4 shadow fade-up" style="max-width: 880px">
                     <div class="row g-0">
                         <div class="col-md-1 ms-3 center1 ">
-                            <img src="${backendURL}/storage/${contentItem.image}" width="70px" height="70px" />
+                            <img class="rounded-circle" src="${backendURL}/storage/${contentItem.image}" width="70px" height="70px" />
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
-                                <span class="size">${contentItem.title} <small class="text-muted ">(${contentItem.role})</small></span>
+                                <span class="size font-family">${contentItem.title} <small class="text-muted size1"><i>(${contentItem.role})</i></small></span>
                                 <span class="size1">
                                     <a href="${contentItem.url}" id="link" class="url-hidden d-flex">${contentItem.url}</a>
                                 </span>
@@ -72,12 +82,15 @@ async function getDatas(keyword = "") {
                                         <u>By ${author}</u>
                                         <span class="fw-bold px-2">|</span>${timeAgo}<span class="fw-bold px-2">|</span>
                                         <a data-bs-toggle="modal" data-bs-target="#modal-${contentItem.content_id}"><u style="cursor: pointer;">${contentComments.length} comments</u></a>
-                                    </span><span class="fw-bold px-2">|</span>${count} points
+                                    </span><span class="fw-bold px-2">|</span>${contentItem.points} points
                                 </small>
                             </div>
                         </div>
                         <div class="col-1 text-end ps-5 ms-4 pt-2">
-                            <button class="border-0 bg-white heart-icon" data-content-id="${contentItem.content_id}" type="button" onclick="alertclick1()">
+                            <button class="border-0 bg-white heart-icon" data-content-id="${contentItem.content_id}" type="button">
+                            <input type="hidden" name="user_id" value="${profileData.id}">
+                            <input type="hidden" name="content_id" value="${contentItem.content_id}">
+                            <input type="hidden" name="points" value="1">
                                 <img src="./assets/imgs/heart${contentCounts[contentItem.content_id] > 0 ? '1' : ''}.png" alt="" width="20px">
                             </button>
                         </div>
@@ -86,24 +99,30 @@ async function getDatas(keyword = "") {
                 
                 <!-- Modal -->
                 <div class="modal fade" id="modal-${contentItem.content_id}" tabindex="-1" aria-labelledby="modal-${contentItem.content_id}-label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content bg-white">
-                            <button type="button" class="btn-close ms-auto align-items-end justify-content-end me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <div class="container text-center">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
+                        <div class="modal-content bg-white shadoworange">
+                        <div class="border-bottom border-3">
+                        <div class="container text-center">
+                        <button type="button" class="btn-close ms-auto align-items-end justify-content-end me-2 mt-2 d-flex" data-bs-dismiss="modal" aria-label="Close" ></button>
                                 <h5 class="modal-title fw-bold">${contentItem.title}</h5>
                                 <div class="size1">
+                                
                                     <a href="${contentItem.url}" id="link" class="url-hidden">(${contentItem.url})</a>
                                 </div>
+                                
                             </div>
-                            <div><h5 class="fw-bold mt-2 ms-3">Comment Section</h5>
-                            <hr /></div>
+                            <h5 class="fw-bold mt-2 ms-3">Comment Section</h5>
+                            </div>
+                            <div>
+                            
+                        </div>
                             <div class="modal-body" id="modal-${contentItem.content_id}-label">
                                 
                                 <!-- Comment section -->
-                                ${await renderComments(contentComments, contentComments.length)}
+                                ${await renderComments(contentComments)}
                             </div>
-                            <div class="container comment_form">
-                                <div class="row">
+                            <div class="container comment_form bg-white border-top border-3 pt-3">
+                                <div class="row ">
                                     <!-- Add comment form -->
                                     <form id="comment_form_${contentItem.content_id}">
                                         <div style="position: relative;">
@@ -124,15 +143,13 @@ async function getDatas(keyword = "") {
         }
         
         document.getElementById("content_form").innerHTML = container;
-    
         // Setup form submission for each content item
+        
         for (const contentItem of content) {
             const commentForm = document.getElementById(`comment_form_${contentItem.content_id}`);
-            console.log(commentForm)
             commentForm.onsubmit = async (e) => {
                 e.preventDefault(); // Prevent page refresh
                 const formData = new FormData(commentForm);
-               
 
                 const response = await fetch(backendURL + "/api/comment", {
                     method: "POST", 
@@ -200,18 +217,33 @@ async function getDatas(keyword = "") {
                             }     
                     }
         }
-        if(localStorage.getItem("token")){
+        
         document.querySelectorAll('.heart-icon').forEach((heartIcon) => {
             heartIcon.addEventListener('click', async () => {
+                // const response = await fetch(backendURL + "/api/points", {
+                //     method: "POST", 
+                //     headers: {
+                //         Accept: "application/json",
+                //     },
+                //     body: formData,
+                // }); 
+               
+                // if(response.ok){
+                //     const json = await response.json(); 
+                //     console.log(json); }
+
+
+
+                if(localStorage.getItem("token")){
                 const contentId = heartIcon.getAttribute('data-content-id');
                 // Toggle heart icon image
                 heartIcon.innerHTML = `<img src="./assets/imgs/heart${contentCounts[contentId] > 0 ? '' : '1'}.png" alt="" width="20px">`;
-                // Toggle count
-                contentCounts[contentId] += (contentCounts[contentId] > 0 ? 0 : 1);
-                // Update points count in UI
+            
+        }else if(!localStorage.getItem("token")){
+            document.querySelector(".wrongbutton").click();
+        }
             });
         });
-    }
     } catch (error) {
         console.error('Error fetching data:', error);
     }
@@ -233,21 +265,21 @@ async function getDatas(keyword = "") {
             }
         }
     } 
-    const search_form = document.getElementById("search_form");
-    search_form.onsubmit = async (e) => {
-    e.preventDefault();
+}
+
+const search_form = document.getElementById("search_form");
+search_form.onsubmit = async (e) => {
+e.preventDefault();
 console.log(search_form)
-    const formData = new FormData(search_form);
-    const keyword = formData.get("keyword");
+const formData = new FormData(search_form);
+const keyword = formData.get("keyword");
 
-    console.log(formData)
-    // Call getDatas with the keyword
-    getDatas(keyword);
+console.log(formData)
+// Call getDatas with the keyword
+getDatas(keyword);
 }
 
-}
-
-async function renderComments(comments, length) {
+async function renderComments(comments) {
     let html = '';
 
     // Loop through each comment
@@ -264,7 +296,6 @@ async function renderComments(comments, length) {
            
             if (response.ok) {
                 const users = await response.json();
-
                 // Find the user corresponding to the comment's user_id
                 const user = users.find(user => user.id === comment.user_id);
 
@@ -282,8 +313,7 @@ async function renderComments(comments, length) {
                                 </div>
                             </div>
                         </div>`;
-                } else {
-                    // User not found, render as Anonymous
+                }else{
                     html += `
                         <div class="card mb-2 border-0">
                             <div class="card-body bg-secondary-subtle rounded-4">
@@ -297,6 +327,7 @@ async function renderComments(comments, length) {
                             </div>
                         </div>`;
                 }
+                
             } else {
                 console.error("Failed to fetch user data");
                 // Handle fetch failure gracefully
@@ -306,11 +337,7 @@ async function renderComments(comments, length) {
             // Handle error in fetch operation
         }
     }
-    if(length == 0){
-        return `<div class="text-center"><i >No comment yet.</i></div>`
-    }else{
-        return html;
-    } // Return the accumulated HTML
+    return html;
 }
 
 

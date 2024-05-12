@@ -163,6 +163,7 @@
                 type="text"
                 class="mt-3 form-control search-input"
                 placeholder="Search"
+                name="keyword"
               />
             </div>
           </form>
@@ -195,7 +196,21 @@
           <br /><br />
           <h5 class="orange fw-bold px-4">Alphabetical</h5>
           <div id="content_form"></div>
-          <br /><br />
+          <br />
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+          <br />
         </div>
         <div class="col-lg-3 fixed-right">
           <br />
@@ -232,12 +247,6 @@
         if (localStorage.getItem("token")) {
           window.location.pathname = "/submit.html";
         } else {
-          document.querySelector(".wrongbutton").click();
-        }
-      }
-
-      function alertclick1() {
-        if (!localStorage.getItem("token")) {
           document.querySelector(".wrongbutton").click();
         }
       }
