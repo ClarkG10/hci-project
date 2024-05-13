@@ -128,7 +128,8 @@ async function getDatas(keyword = "") {
                                         <div style="position: relative;">
                                             <input type="hidden" name="user_id" id="user_id_${contentItem.content_id}" value="${profileData.id}" />
                                             <input type="hidden" name="content_id" id="content_id" value="${contentItem.content_id}" />
-                                            <div class="comment_input"><textarea class="form-control mb-2" rows="2" id="comment" name="comment" placeholder="Leave a comment"></textarea></div>
+                                            <div class="comment_input">
+                                            <input class="form-control mb-2" rows="2" id="comment" name="comment" placeholder="Leave a comment" style="height: 50px;"/></div>
                                             <!-- Arrow emoji button -->
                                             <button  type="submit" class="bg-white border-0" style="position: absolute; top: 15px; right: 5px; bottom: 12px;">
                                                 &#10148; <!-- Arrow emoji -->
