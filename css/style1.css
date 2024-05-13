@@ -83,10 +83,9 @@ body {
   }
 }
 
-body,
-.bg-color,
 .navbar {
-  background-color: #efefef;
+  background-color: #ffffff;
+  border-bottom: black !important;
 }
 
 select {

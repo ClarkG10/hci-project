@@ -78,7 +78,7 @@ async function getDatas(keyword = "") {
                                 </span>
                                 <small class="text-body-secondary">
                                     <span class="mt-3 size1">
-                                        <u>By ${author}</u>
+                                        <u class="fw-bold font-family">By ${author}</u>
                                         <span class="fw-bold px-2">|</span>${timeAgo}<span class="fw-bold px-2">|</span>
                                         <a data-bs-toggle="modal" data-bs-target="#modal-${contentItem.content_id}"><u style="cursor: pointer;">${contentComments.length} comments</u></a>
                                     </span><span class="fw-bold px-2">|</span>${contentItem.points} points

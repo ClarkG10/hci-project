@@ -51,11 +51,6 @@
     border-color: #FF6500;
 }
 
-body,
-.bg-color {
-    background-color: #f1f1f1;
-}
-
 .btn,
 .background {
     background-color: #FF6500;
@@ -69,7 +64,7 @@ body,
 }
 
 .navbar {
-    background: #f1f1f1;
+    background: #ffffff;
 }
 
 .text1 {
@@ -162,7 +157,6 @@ body,
 .search-input {
     background-image: url('search.png');
     background-size: 20px;
-    background-color: #efefef;
     background-repeat: no-repeat;
     background-position: 10px center;
     padding-left: 40px;
@@ -174,7 +168,6 @@ body,
 .search-input:focus {
     background-image: url('search.png');
     background-size: 20px;
-    background-color: #efefef;
     background-repeat: no-repeat;
     background-position: 10px center;
     padding-left: 40px;
