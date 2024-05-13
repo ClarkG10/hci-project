@@ -50,7 +50,6 @@ async function getDatas(keyword = "") {
             },
         });
         const comments = await comment_response.json();
-        console.log(content)
         let container = "";
         for (let i = 0; i < content.length; i++) {
             const contentItem = content[i];
@@ -169,7 +168,6 @@ async function getDatas(keyword = "") {
 
                 if(response.ok){
                     const json = await response.json(); 
-                    console.log(json); 
                     // Reset the form after submission
                     for(let i = 0; i < json1.length; i++){
                         if (json1[i].id == json.user_id && json.user_id != 2) {
@@ -271,11 +269,9 @@ async function getDatas(keyword = "") {
 const search_form = document.getElementById("search_form");
 search_form.onsubmit = async (e) => {
 e.preventDefault();
-console.log(search_form)
 const formData = new FormData(search_form);
 const keyword = formData.get("keyword");
 
-console.log(formData)
 // Call getDatas with the keyword
 getDatas(keyword);
 }
